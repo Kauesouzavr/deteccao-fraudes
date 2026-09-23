@@ -1,0 +1,795 @@
+{
+  "infoDataset": {
+    "totalTransacoesOriginal": 284807,
+    "totalFraudesOriginal": 492,
+    "totalAposBalanceamento": 4730,
+    "totalFraudesBalanceamento": 473,
+    "totalTeste": 1183,
+    "totalFraudesTeste": 118
+  },
+  "metricas": [
+    {
+      "modelo": "Random Forest",
+      "acuracia": 0.9822,
+      "precisao": 0.9899,
+      "recall": 0.8305,
+      "f1": 0.9032
+    },
+    {
+      "modelo": "XGBoost",
+      "acuracia": 0.9831,
+      "precisao": 0.9804,
+      "recall": 0.8475,
+      "f1": 0.9091
+    },
+    {
+      "modelo": "Decision Tree",
+      "acuracia": 0.973,
+      "precisao": 0.8644,
+      "recall": 0.8644,
+      "f1": 0.8644
+    }
+  ],
+  "matrizesConfusao": {
+    "Random Forest": [
+      [
+        1064,
+        1
+      ],
+      [
+        20,
+        98
+      ]
+    ],
+    "XGBoost": [
+      [
+        1063,
+        2
+      ],
+      [
+        18,
+        100
+      ]
+    ],
+    "Decision Tree": [
+      [
+        1049,
+        16
+      ],
+      [
+        16,
+        102
+      ]
+    ]
+  },
+  "importanciaFeatures": {
+    "Random Forest": [
+      {
+        "feature": "V14",
+        "importancia": 0.1893
+      },
+      {
+        "feature": "V10",
+        "importancia": 0.136
+      },
+      {
+        "feature": "V17",
+        "importancia": 0.1142
+      },
+      {
+        "feature": "V12",
+        "importancia": 0.11
+      },
+      {
+        "feature": "V16",
+        "importancia": 0.0795
+      },
+      {
+        "feature": "V11",
+        "importancia": 0.0633
+      },
+      {
+        "feature": "V3",
+        "importancia": 0.0531
+      },
+      {
+        "feature": "V4",
+        "importancia": 0.0418
+      },
+      {
+        "feature": "V9",
+        "importancia": 0.0239
+      },
+      {
+        "feature": "V18",
+        "importancia": 0.0212
+      }
+    ],
+    "XGBoost": [
+      {
+        "feature": "V14",
+        "importancia": 0.6049
+      },
+      {
+        "feature": "V17",
+        "importancia": 0.0556
+      },
+      {
+        "feature": "V4",
+        "importancia": 0.0349
+      },
+      {
+        "feature": "V10",
+        "importancia": 0.0304
+      },
+      {
+        "feature": "V20",
+        "importancia": 0.026
+      },
+      {
+        "feature": "V12",
+        "importancia": 0.0196
+      },
+      {
+        "feature": "V11",
+        "importancia": 0.016
+      },
+      {
+        "feature": "V21",
+        "importancia": 0.0149
+      },
+      {
+        "feature": "V7",
+        "importancia": 0.0139
+      },
+      {
+        "feature": "V13",
+        "importancia": 0.0133
+      }
+    ],
+    "Decision Tree": [
+      {
+        "feature": "V14",
+        "importancia": 0.7818
+      },
+      {
+        "feature": "V17",
+        "importancia": 0.0512
+      },
+      {
+        "feature": "V10",
+        "importancia": 0.0197
+      },
+      {
+        "feature": "V20",
+        "importancia": 0.0196
+      },
+      {
+        "feature": "V4",
+        "importancia": 0.017
+      },
+      {
+        "feature": "V19",
+        "importancia": 0.0114
+      },
+      {
+        "feature": "V15",
+        "importancia": 0.0102
+      },
+      {
+        "feature": "V24",
+        "importancia": 0.0098
+      },
+      {
+        "feature": "V26",
+        "importancia": 0.0094
+      },
+      {
+        "feature": "V13",
+        "importancia": 0.0093
+      }
+    ]
+  },
+  "amostrasTransacoes": [
+    {
+      "id": 379,
+      "valor": 2.28,
+      "tempoSegundos": 160489.0,
+      "classeReal": 0,
+      "previsoes": {
+        "Random Forest": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0
+        },
+        "XGBoost": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0
+        },
+        "Decision Tree": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0
+        }
+      }
+    },
+    {
+      "id": 10,
+      "valor": 0.83,
+      "tempoSegundos": 55311.0,
+      "classeReal": 1,
+      "previsoes": {
+        "Random Forest": {
+          "classePrevista": 1,
+          "probabilidadeFraude": 1.0
+        },
+        "XGBoost": {
+          "classePrevista": 1,
+          "probabilidadeFraude": 1.0
+        },
+        "Decision Tree": {
+          "classePrevista": 1,
+          "probabilidadeFraude": 1.0
+        }
+      }
+    },
+    {
+      "id": 3191,
+      "valor": 3.79,
+      "tempoSegundos": 17187.0,
+      "classeReal": 1,
+      "previsoes": {
+        "Random Forest": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.21
+        },
+        "XGBoost": {
+          "classePrevista": 1,
+          "probabilidadeFraude": 0.5798
+        },
+        "Decision Tree": {
+          "classePrevista": 1,
+          "probabilidadeFraude": 1.0
+        }
+      }
+    },
+    {
+      "id": 1297,
+      "valor": 34.9,
+      "tempoSegundos": 162120.0,
+      "classeReal": 0,
+      "previsoes": {
+        "Random Forest": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0
+        },
+        "XGBoost": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0
+        },
+        "Decision Tree": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0
+        }
+      }
+    },
+    {
+      "id": 3382,
+      "valor": 17.06,
+      "tempoSegundos": 115691.0,
+      "classeReal": 1,
+      "previsoes": {
+        "Random Forest": {
+          "classePrevista": 1,
+          "probabilidadeFraude": 0.99
+        },
+        "XGBoost": {
+          "classePrevista": 1,
+          "probabilidadeFraude": 0.9998
+        },
+        "Decision Tree": {
+          "classePrevista": 1,
+          "probabilidadeFraude": 1.0
+        }
+      }
+    },
+    {
+      "id": 3295,
+      "valor": 39.11,
+      "tempoSegundos": 122250.0,
+      "classeReal": 0,
+      "previsoes": {
+        "Random Forest": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.04
+        },
+        "XGBoost": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0032
+        },
+        "Decision Tree": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0
+        }
+      }
+    },
+    {
+      "id": 4704,
+      "valor": 444.17,
+      "tempoSegundos": 57027.0,
+      "classeReal": 1,
+      "previsoes": {
+        "Random Forest": {
+          "classePrevista": 1,
+          "probabilidadeFraude": 1.0
+        },
+        "XGBoost": {
+          "classePrevista": 1,
+          "probabilidadeFraude": 0.9998
+        },
+        "Decision Tree": {
+          "classePrevista": 1,
+          "probabilidadeFraude": 1.0
+        }
+      }
+    },
+    {
+      "id": 1228,
+      "valor": 1.0,
+      "tempoSegundos": 20931.0,
+      "classeReal": 1,
+      "previsoes": {
+        "Random Forest": {
+          "classePrevista": 1,
+          "probabilidadeFraude": 1.0
+        },
+        "XGBoost": {
+          "classePrevista": 1,
+          "probabilidadeFraude": 0.9997
+        },
+        "Decision Tree": {
+          "classePrevista": 1,
+          "probabilidadeFraude": 1.0
+        }
+      }
+    },
+    {
+      "id": 855,
+      "valor": 0.0,
+      "tempoSegundos": 133731.0,
+      "classeReal": 1,
+      "previsoes": {
+        "Random Forest": {
+          "classePrevista": 1,
+          "probabilidadeFraude": 0.99
+        },
+        "XGBoost": {
+          "classePrevista": 1,
+          "probabilidadeFraude": 0.9997
+        },
+        "Decision Tree": {
+          "classePrevista": 1,
+          "probabilidadeFraude": 1.0
+        }
+      }
+    },
+    {
+      "id": 3701,
+      "valor": 41.94,
+      "tempoSegundos": 165779.0,
+      "classeReal": 0,
+      "previsoes": {
+        "Random Forest": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0
+        },
+        "XGBoost": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0
+        },
+        "Decision Tree": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0
+        }
+      }
+    },
+    {
+      "id": 3590,
+      "valor": 2.28,
+      "tempoSegundos": 100223.0,
+      "classeReal": 1,
+      "previsoes": {
+        "Random Forest": {
+          "classePrevista": 1,
+          "probabilidadeFraude": 1.0
+        },
+        "XGBoost": {
+          "classePrevista": 1,
+          "probabilidadeFraude": 0.9999
+        },
+        "Decision Tree": {
+          "classePrevista": 1,
+          "probabilidadeFraude": 1.0
+        }
+      }
+    },
+    {
+      "id": 1356,
+      "valor": 25.77,
+      "tempoSegundos": 27617.0,
+      "classeReal": 0,
+      "previsoes": {
+        "Random Forest": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0
+        },
+        "XGBoost": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0002
+        },
+        "Decision Tree": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0
+        }
+      }
+    },
+    {
+      "id": 2455,
+      "valor": 47.79,
+      "tempoSegundos": 127257.0,
+      "classeReal": 0,
+      "previsoes": {
+        "Random Forest": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.01
+        },
+        "XGBoost": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0001
+        },
+        "Decision Tree": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0
+        }
+      }
+    },
+    {
+      "id": 2713,
+      "valor": 41.68,
+      "tempoSegundos": 73664.0,
+      "classeReal": 0,
+      "previsoes": {
+        "Random Forest": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0
+        },
+        "XGBoost": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0
+        },
+        "Decision Tree": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0
+        }
+      }
+    },
+    {
+      "id": 2274,
+      "valor": 2.65,
+      "tempoSegundos": 10251.0,
+      "classeReal": 0,
+      "previsoes": {
+        "Random Forest": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.01
+        },
+        "XGBoost": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0
+        },
+        "Decision Tree": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0
+        }
+      }
+    },
+    {
+      "id": 3111,
+      "valor": 187.11,
+      "tempoSegundos": 156685.0,
+      "classeReal": 1,
+      "previsoes": {
+        "Random Forest": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.03
+        },
+        "XGBoost": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0028
+        },
+        "Decision Tree": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0
+        }
+      }
+    },
+    {
+      "id": 111,
+      "valor": 20.51,
+      "tempoSegundos": 141351.0,
+      "classeReal": 0,
+      "previsoes": {
+        "Random Forest": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.01
+        },
+        "XGBoost": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0
+        },
+        "Decision Tree": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0
+        }
+      }
+    },
+    {
+      "id": 3951,
+      "valor": 7.67,
+      "tempoSegundos": 157505.0,
+      "classeReal": 0,
+      "previsoes": {
+        "Random Forest": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.01
+        },
+        "XGBoost": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0
+        },
+        "Decision Tree": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0
+        }
+      }
+    },
+    {
+      "id": 4508,
+      "valor": 4.56,
+      "tempoSegundos": 35926.0,
+      "classeReal": 1,
+      "previsoes": {
+        "Random Forest": {
+          "classePrevista": 1,
+          "probabilidadeFraude": 1.0
+        },
+        "XGBoost": {
+          "classePrevista": 1,
+          "probabilidadeFraude": 0.9999
+        },
+        "Decision Tree": {
+          "classePrevista": 1,
+          "probabilidadeFraude": 1.0
+        }
+      }
+    },
+    {
+      "id": 508,
+      "valor": 589.18,
+      "tempoSegundos": 43701.0,
+      "classeReal": 0,
+      "previsoes": {
+        "Random Forest": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0
+        },
+        "XGBoost": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0
+        },
+        "Decision Tree": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0
+        }
+      }
+    },
+    {
+      "id": 4045,
+      "valor": 6.53,
+      "tempoSegundos": 60187.0,
+      "classeReal": 0,
+      "previsoes": {
+        "Random Forest": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0
+        },
+        "XGBoost": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0001
+        },
+        "Decision Tree": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0
+        }
+      }
+    },
+    {
+      "id": 4088,
+      "valor": 80.22,
+      "tempoSegundos": 110552.0,
+      "classeReal": 1,
+      "previsoes": {
+        "Random Forest": {
+          "classePrevista": 1,
+          "probabilidadeFraude": 1.0
+        },
+        "XGBoost": {
+          "classePrevista": 1,
+          "probabilidadeFraude": 0.9995
+        },
+        "Decision Tree": {
+          "classePrevista": 1,
+          "probabilidadeFraude": 1.0
+        }
+      }
+    },
+    {
+      "id": 3487,
+      "valor": 35.95,
+      "tempoSegundos": 41371.0,
+      "classeReal": 0,
+      "previsoes": {
+        "Random Forest": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0
+        },
+        "XGBoost": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0001
+        },
+        "Decision Tree": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0
+        }
+      }
+    },
+    {
+      "id": 792,
+      "valor": 153.46,
+      "tempoSegundos": 56624.0,
+      "classeReal": 1,
+      "previsoes": {
+        "Random Forest": {
+          "classePrevista": 1,
+          "probabilidadeFraude": 1.0
+        },
+        "XGBoost": {
+          "classePrevista": 1,
+          "probabilidadeFraude": 0.9999
+        },
+        "Decision Tree": {
+          "classePrevista": 1,
+          "probabilidadeFraude": 1.0
+        }
+      }
+    },
+    {
+      "id": 38,
+      "valor": 41.0,
+      "tempoSegundos": 69223.0,
+      "classeReal": 0,
+      "previsoes": {
+        "Random Forest": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0
+        },
+        "XGBoost": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0004
+        },
+        "Decision Tree": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0
+        }
+      }
+    },
+    {
+      "id": 959,
+      "valor": 106.9,
+      "tempoSegundos": 77627.0,
+      "classeReal": 1,
+      "previsoes": {
+        "Random Forest": {
+          "classePrevista": 1,
+          "probabilidadeFraude": 1.0
+        },
+        "XGBoost": {
+          "classePrevista": 1,
+          "probabilidadeFraude": 0.9999
+        },
+        "Decision Tree": {
+          "classePrevista": 1,
+          "probabilidadeFraude": 1.0
+        }
+      }
+    },
+    {
+      "id": 297,
+      "valor": 461.45,
+      "tempoSegundos": 2552.0,
+      "classeReal": 0,
+      "previsoes": {
+        "Random Forest": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0
+        },
+        "XGBoost": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0
+        },
+        "Decision Tree": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0
+        }
+      }
+    },
+    {
+      "id": 180,
+      "valor": 720.8,
+      "tempoSegundos": 129095.0,
+      "classeReal": 1,
+      "previsoes": {
+        "Random Forest": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.15
+        },
+        "XGBoost": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.009
+        },
+        "Decision Tree": {
+          "classePrevista": 0,
+          "probabilidadeFraude": 0.0
+        }
+      }
+    },
+    {
+      "id": 2284,
+      "valor": 1.0,
+      "tempoSegundos": 134766.0,
+      "classeReal": 1,
+      "previsoes": {
+        "Random Forest": {
+          "classePrevista": 1,
+          "probabilidadeFraude": 0.95
+        },
+        "XGBoost": {
+          "classePrevista": 1,
+          "probabilidadeFraude": 0.9997
+        },
+        "Decision Tree": {
+          "classePrevista": 1,
+          "probabilidadeFraude": 1.0
+        }
+      }
+    },
+    {
+      "id": 3185,
+      "valor": 1.0,
+      "tempoSegundos": 14152.0,
+      "classeReal": 1,
+      "previsoes": {
+        "Random Forest": {
+          "classePrevista": 1,
+          "probabilidadeFraude": 1.0
+        },
+        "XGBoost": {
+          "classePrevista": 1,
+          "probabilidadeFraude": 0.9999
+        },
+        "Decision Tree": {
+          "classePrevista": 1,
+          "probabilidadeFraude": 1.0
+        }
+      }
+    }
+  ]
+}
