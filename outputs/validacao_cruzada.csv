@@ -1,0 +1,4 @@
+modelo,accuracy_media,accuracy_desvio,precision_media,precision_desvio,recall_media,recall_desvio,f1_media,f1_desvio
+Random Forest,0.9827,0.0024,0.9758,0.0104,0.8478,0.0237,0.9071,0.0138
+XGBoost,0.9835,0.0032,0.97,0.0293,0.8626,0.0211,0.9128,0.0169
+Decision Tree,0.9681,0.0076,0.8255,0.042,0.8647,0.0377,0.8443,0.0367

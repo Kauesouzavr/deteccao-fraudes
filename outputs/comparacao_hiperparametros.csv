@@ -1,0 +1,7 @@
+modelo,versao,acuracia,precisao,recall,f1
+Random Forest,padrão,0.9822,0.9899,0.8305,0.9032
+Random Forest,otimizado,0.9822,1.0,0.822,0.9023
+XGBoost,padrão,0.9831,0.9804,0.8475,0.9091
+XGBoost,otimizado,0.9831,0.99,0.839,0.9083
+Decision Tree,padrão,0.973,0.8644,0.8644,0.8644
+Decision Tree,otimizado,0.9814,0.9898,0.822,0.8981
