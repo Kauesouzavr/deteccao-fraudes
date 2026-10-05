@@ -11,6 +11,7 @@ import { Footer } from "@/components/Footer";
 import { CrossValidationTable } from "@/components/CrossValidationTable";
 import { HyperparameterTuningTable } from "@/components/HyperparameterTuningTable";
 import { BalancingComparisonChart } from "@/components/BalancingComparisonChart";
+import { PredictorDemo } from "@/components/PredictorDemo";
 
 const dadosResultados = dados as DadosResultados;
 const MODELOS: NomeModelo[] = ["Random Forest", "XGBoost", "Decision Tree"];
@@ -73,6 +74,18 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <Section
+        titulo="Teste você mesmo"
+        descricao="Simulador do Random Forest otimizado rodando ao vivo no seu navegador (sem servidor). Escolha uma transação real e ajuste valor e horário pra ver a previsão mudar na hora."
+      >
+        <div
+          className="rounded-xl p-6 sm:p-8"
+          style={{ background: "var(--surface-card)", border: "1px solid var(--border)" }}
+        >
+          <PredictorDemo />
+        </div>
+      </Section>
 
       <Section
         titulo="Metodologia"
