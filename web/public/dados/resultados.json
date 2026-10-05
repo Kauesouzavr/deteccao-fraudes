@@ -791,5 +791,140 @@
         }
       }
     }
+  ],
+  "validacaoCruzada": [
+    {
+      "modelo": "Random Forest",
+      "accuracy_media": 0.9827,
+      "accuracy_desvio": 0.0024,
+      "precision_media": 0.9758,
+      "precision_desvio": 0.0104,
+      "recall_media": 0.8478,
+      "recall_desvio": 0.0237,
+      "f1_media": 0.9071,
+      "f1_desvio": 0.0138
+    },
+    {
+      "modelo": "XGBoost",
+      "accuracy_media": 0.9835,
+      "accuracy_desvio": 0.0032,
+      "precision_media": 0.97,
+      "precision_desvio": 0.0293,
+      "recall_media": 0.8626,
+      "recall_desvio": 0.0211,
+      "f1_media": 0.9128,
+      "f1_desvio": 0.0169
+    },
+    {
+      "modelo": "Decision Tree",
+      "accuracy_media": 0.9681,
+      "accuracy_desvio": 0.0076,
+      "precision_media": 0.8255,
+      "precision_desvio": 0.042,
+      "recall_media": 0.8647,
+      "recall_desvio": 0.0377,
+      "f1_media": 0.8443,
+      "f1_desvio": 0.0367
+    }
+  ],
+  "comparacaoHiperparametros": [
+    {
+      "modelo": "Random Forest",
+      "versao": "padrão",
+      "acuracia": 0.9822,
+      "precisao": 0.9899,
+      "recall": 0.8305,
+      "f1": 0.9032
+    },
+    {
+      "modelo": "Random Forest",
+      "versao": "otimizado",
+      "acuracia": 0.9822,
+      "precisao": 1.0,
+      "recall": 0.822,
+      "f1": 0.9023
+    },
+    {
+      "modelo": "XGBoost",
+      "versao": "padrão",
+      "acuracia": 0.9831,
+      "precisao": 0.9804,
+      "recall": 0.8475,
+      "f1": 0.9091
+    },
+    {
+      "modelo": "XGBoost",
+      "versao": "otimizado",
+      "acuracia": 0.9831,
+      "precisao": 0.99,
+      "recall": 0.839,
+      "f1": 0.9083
+    },
+    {
+      "modelo": "Decision Tree",
+      "versao": "padrão",
+      "acuracia": 0.973,
+      "precisao": 0.8644,
+      "recall": 0.8644,
+      "f1": 0.8644
+    },
+    {
+      "modelo": "Decision Tree",
+      "versao": "otimizado",
+      "acuracia": 0.9814,
+      "precisao": 0.9898,
+      "recall": 0.822,
+      "f1": 0.8981
+    }
+  ],
+  "comparacaoBalanceamento": [
+    {
+      "estrategia": "Undersampling",
+      "modelo": "Random Forest",
+      "acuracia": 0.9987,
+      "precisao": 0.5758,
+      "recall": 0.8051,
+      "f1": 0.6714
+    },
+    {
+      "estrategia": "Undersampling",
+      "modelo": "XGBoost",
+      "acuracia": 0.9974,
+      "precisao": 0.3769,
+      "recall": 0.8305,
+      "f1": 0.5185
+    },
+    {
+      "estrategia": "Undersampling",
+      "modelo": "Decision Tree",
+      "acuracia": 0.979,
+      "precisao": 0.062,
+      "recall": 0.822,
+      "f1": 0.1153
+    },
+    {
+      "estrategia": "SMOTE",
+      "modelo": "Random Forest",
+      "acuracia": 0.9995,
+      "precisao": 0.91,
+      "recall": 0.7712,
+      "f1": 0.8349
+    },
+    {
+      "estrategia": "SMOTE",
+      "modelo": "XGBoost",
+      "acuracia": 0.9994,
+      "precisao": 0.8667,
+      "recall": 0.7712,
+      "f1": 0.8161
+    },
+    {
+      "estrategia": "SMOTE",
+      "modelo": "Decision Tree",
+      "acuracia": 0.9971,
+      "precisao": 0.3333,
+      "recall": 0.7458,
+      "f1": 0.4607
+    }
   ]
 }

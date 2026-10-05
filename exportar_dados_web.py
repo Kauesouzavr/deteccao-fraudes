@@ -11,6 +11,7 @@ import json
 import os
 
 import numpy as np
+import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import (
@@ -32,6 +33,16 @@ from main import (
 )
 
 CAMINHO_SAIDA = os.path.join("web", "public", "dados", "resultados.json")
+
+
+def carregar_csv_se_existir(caminho):
+    """Lê um CSV gerado por outro script (validacao_cruzada.py,
+    comparacao_balanceamento.py) e retorna como lista de dicts pro JSON. Se o
+    arquivo ainda não existir (script correspondente não rodou), retorna None
+    em vez de quebrar a exportação principal."""
+    if not os.path.exists(caminho):
+        return None
+    return pd.read_csv(caminho).to_dict(orient="records")
 
 
 def treinar_modelos_detalhado(X_treino, X_teste, y_treino, y_teste):
@@ -165,6 +176,15 @@ def main():
         "matrizesConfusao": matrizes,
         "importanciaFeatures": importancias,
         "amostrasTransacoes": amostras,
+        "validacaoCruzada": carregar_csv_se_existir(
+            os.path.join("outputs", "validacao_cruzada.csv")
+        ),
+        "comparacaoHiperparametros": carregar_csv_se_existir(
+            os.path.join("outputs", "comparacao_hiperparametros.csv")
+        ),
+        "comparacaoBalanceamento": carregar_csv_se_existir(
+            os.path.join("outputs", "comparacao_balanceamento.csv")
+        ),
     }
 
     with open(CAMINHO_SAIDA, "w", encoding="utf-8") as arquivo:

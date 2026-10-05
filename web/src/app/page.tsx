@@ -8,13 +8,24 @@ import { TransactionExplorer } from "@/components/TransactionExplorer";
 import { Methodology } from "@/components/Methodology";
 import { Section } from "@/components/Section";
 import { Footer } from "@/components/Footer";
+import { CrossValidationTable } from "@/components/CrossValidationTable";
+import { HyperparameterTuningTable } from "@/components/HyperparameterTuningTable";
+import { BalancingComparisonChart } from "@/components/BalancingComparisonChart";
 
 const dadosResultados = dados as DadosResultados;
 const MODELOS: NomeModelo[] = ["Random Forest", "XGBoost", "Decision Tree"];
 
 export default function Home() {
-  const { infoDataset, metricas, matrizesConfusao, importanciaFeatures, amostrasTransacoes } =
-    dadosResultados;
+  const {
+    infoDataset,
+    metricas,
+    matrizesConfusao,
+    importanciaFeatures,
+    amostrasTransacoes,
+    validacaoCruzada,
+    comparacaoHiperparametros,
+    comparacaoBalanceamento,
+  } = dadosResultados;
 
   const melhorModelo = [...metricas].sort((a, b) => b.f1 - a.f1)[0];
   const taxaFraudeOriginal = (
@@ -83,6 +94,59 @@ export default function Home() {
           <MetricsChart metricas={metricas} />
         </div>
       </Section>
+
+      {validacaoCruzada && comparacaoHiperparametros && (
+        <Section
+          titulo="Validação cruzada e otimização de hiperparâmetros"
+          descricao="5-fold cross-validation confirma que as métricas são estáveis, e uma busca de hiperparâmetros (RandomizedSearchCV, 20 combinações) testa se dá pra melhorar os modelos padrão."
+        >
+          <div className="grid gap-4 lg:grid-cols-2">
+            <div
+              className="rounded-xl p-6 sm:p-8"
+              style={{ background: "var(--surface-card)", border: "1px solid var(--border)" }}
+            >
+              <h3 className="text-sm font-semibold mb-5" style={{ color: "var(--text-primary)" }}>
+                Estabilidade (média ± desvio em 5 folds)
+              </h3>
+              <CrossValidationTable linhas={validacaoCruzada} />
+            </div>
+            <div
+              className="rounded-xl p-6 sm:p-8"
+              style={{ background: "var(--surface-card)", border: "1px solid var(--border)" }}
+            >
+              <h3 className="text-sm font-semibold mb-5" style={{ color: "var(--text-primary)" }}>
+                Parâmetros padrão vs. otimizados
+              </h3>
+              <HyperparameterTuningTable linhas={comparacaoHiperparametros} />
+              <p className="mt-5 text-[11px] leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                Random Forest e XGBoost já estavam bem ajustados. A Decision Tree tinha
+                overfitting sem limite de profundidade — otimizada, ganhou quase 3,4 pontos de F1.
+              </p>
+            </div>
+          </div>
+        </Section>
+      )}
+
+      {comparacaoBalanceamento && (
+        <Section
+          titulo="Undersampling vs. SMOTE"
+          descricao="Metodologia mais rigorosa: balanceamento aplicado só no treino, avaliado contra a distribuição real de fraude (~0,17%) — bem mais desafiadora que o teste balanceado usado acima."
+        >
+          <div
+            className="rounded-xl p-6 sm:p-8"
+            style={{ background: "var(--surface-card)", border: "1px solid var(--border)" }}
+          >
+            <BalancingComparisonChart linhas={comparacaoBalanceamento} />
+            <p className="mt-8 text-xs leading-relaxed max-w-2xl" style={{ color: "var(--text-secondary)" }}>
+              O undersampling descarta ~98% das transações legítimas de treino, então os
+              modelos veem pouca variedade de padrões normais e erram muito mais contra o
+              volume real — a precisão da Decision Tree despenca pra 6% (1 em cada 16 alertas é
+              real). O SMOTE mantém todos os dados legítimos reais e só complementa a classe
+              minoritária com exemplos sintéticos, generalizando bem melhor.
+            </p>
+          </div>
+        </Section>
+      )}
 
       <Section
         titulo="Matrizes de confusão"
