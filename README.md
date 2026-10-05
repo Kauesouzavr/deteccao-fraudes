@@ -146,6 +146,34 @@ significado no mundo real — as outras 28 variáveis, V1-V28, são componentes
 anonimizados por PCA e não têm um valor "editável" que faça sentido) pra ver
 a previsão de fraude mudar instantaneamente.
 
+## Limitações
+
+Esse projeto treina e valida tudo usando **um único dataset** (o Credit Card
+Fraud Detection do Kaggle). Isso não é uma falha específica deste projeto —
+é a realidade de praticamente qualquer projeto público de detecção de
+fraude: dados reais de transações bancárias são extremamente sigilosos (por
+lei e por concorrência entre instituições), então não existe forma de uma
+pessoa física conseguir dados de múltiplos bancos pra treinar um modelo mais
+"universal". Os datasets públicos disponíveis (como este) são praticamente
+os únicos usados pela comunidade de ML pra esse tipo de estudo.
+
+Na prática, isso significa que os modelos aqui **não têm garantia de
+generalizar** para:
+
+- Transações de outro banco ou bandeira de cartão (padrões de fraude variam
+  entre instituições).
+- Outro período de tempo (os padrões de fraude mudam — novas técnicas de
+  golpe surgem constantemente, e o dataset é de uma janela de tempo fixa).
+- Outro país ou perfil de consumo.
+
+Um sistema de detecção de fraude em produção de verdade é treinado e
+re-treinado continuamente com os dados internos e atualizados do próprio
+banco, geralmente combinado com outras informações que não estão neste
+dataset (geolocalização, dispositivo usado, histórico do cliente, etc.).
+Este projeto deve ser entendido como uma **prova de conceito educacional**
+da metodologia de ML aplicada a esse tipo de problema, não como um sistema
+pronto para produção.
+
 ## Extensões futuras (fora do escopo atual)
 
 - Interface simples (ex.: Streamlit) para testar uma transação manualmente.
