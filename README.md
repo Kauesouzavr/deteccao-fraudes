@@ -62,9 +62,37 @@ ligeiramente, mas devem ficar numa faixa parecida.
 Random Forest teve o melhor desempenho geral; Decision Tree teve o melhor
 recall, mas a menor precisão.
 
+## Validação cruzada e otimização de hiperparâmetros
+
+Além do pipeline principal, `validacao_cruzada.py` faz duas análises extras:
+
+```bash
+python validacao_cruzada.py
+```
+
+1. **Validação cruzada estratificada** (5 folds) com os parâmetros padrão
+   dos 3 modelos, pra confirmar que o desempenho é estável e não depende de
+   uma única divisão treino/teste sortuda:
+
+   | Modelo        | F1-Score (média ± desvio) |
+   |---------------|----------------------------|
+   | XGBoost       | 91,28% ± 1,69%             |
+   | Random Forest | 90,71% ± 1,38%             |
+   | Decision Tree | 84,43% ± 3,67%             |
+
+2. **Otimização de hiperparâmetros** via `RandomizedSearchCV` (20
+   combinações, 5 folds), comparando o modelo padrão com o otimizado no
+   mesmo conjunto de teste. Random Forest e XGBoost já estavam bem
+   ajustados (variação dentro da margem de ruído), mas a **Decision Tree
+   tinha overfitting** — sem limite de profundidade, ela decorava o
+   conjunto de treino. Limitando a profundidade (`max_depth=5`) o F1-Score
+   subiu de 86,44% para 89,81%.
+
+Os resultados completos ficam salvos em `outputs/validacao_cruzada.csv` e
+`outputs/comparacao_hiperparametros.csv`.
+
 ## Extensões futuras (fora do escopo atual)
 
 - Interface simples (ex.: Streamlit) para testar uma transação manualmente.
-- Validação cruzada e otimização de hiperparâmetros.
 - Testar um método de balanceamento diferente (ex.: SMOTE) e comparar com
   o undersampling manual.
