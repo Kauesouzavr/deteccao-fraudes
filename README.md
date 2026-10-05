@@ -91,8 +91,44 @@ python validacao_cruzada.py
 Os resultados completos ficam salvos em `outputs/validacao_cruzada.csv` e
 `outputs/comparacao_hiperparametros.csv`.
 
+## Undersampling vs. SMOTE
+
+`comparacao_balanceamento.py` testa uma estratégia de balanceamento
+diferente — **SMOTE** (gera transações fraudulentas sintéticas por
+interpolação, em vez de descartar transações legítimas) — contra o
+undersampling manual usado no pipeline principal.
+
+```bash
+python comparacao_balanceamento.py
+```
+
+Para essa comparação ser justa e sem vazamento de dados, a metodologia aqui
+é **diferente** da do `main.py`: os dados são divididos em treino/teste
+**antes** de balancear, o balanceamento (undersampling ou SMOTE) é aplicado
+só no treino, e a avaliação usa o conjunto de teste com a distribuição real
+de fraude (~0,17%) — bem mais desbalanceado que o teste de ~10% usado no
+pipeline principal e no `validacao_cruzada.py`. Por isso os números abaixo
+não são diretamente comparáveis à tabela de "Resultados esperados" acima.
+
+| Estratégia     | Modelo        | Acurácia | Precisão | Recall | F1-Score |
+|----------------|---------------|----------|----------|--------|----------|
+| Undersampling  | Random Forest | 99,87%   | 57,58%   | 80,51% | 67,14%   |
+| Undersampling  | XGBoost       | 99,74%   | 37,69%   | 83,05% | 51,85%   |
+| Undersampling  | Decision Tree | 97,90%   | 6,20%    | 82,20% | 11,53%   |
+| SMOTE          | Random Forest | 99,95%   | 91,00%   | 77,12% | 83,49%   |
+| SMOTE          | XGBoost       | 99,94%   | 86,67%   | 77,12% | 81,61%   |
+| SMOTE          | Decision Tree | 99,71%   | 33,33%   | 74,58% | 46,07%   |
+
+**SMOTE vence com folga em todos os modelos.** O undersampling descarta
+~98% das transações legítimas de treino (fica só com 3.550 registros), então
+o modelo vê pouquíssima variedade de padrões "normais" e erra muito mais
+quando confrontado com o volume real de transações legítimas — a precisão
+da Decision Tree despenca pra 6%, ou seja, a cada ~16 alertas de fraude, só
+1 é real. O SMOTE mantém todas as transações legítimas reais e só
+complementa a classe minoritária, generalizando muito melhor para o cenário
+real de produção. Resultados completos em
+`outputs/comparacao_balanceamento.csv`.
+
 ## Extensões futuras (fora do escopo atual)
 
 - Interface simples (ex.: Streamlit) para testar uma transação manualmente.
-- Testar um método de balanceamento diferente (ex.: SMOTE) e comparar com
-  o undersampling manual.

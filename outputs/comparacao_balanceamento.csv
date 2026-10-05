@@ -1,0 +1,7 @@
+estrategia,modelo,acuracia,precisao,recall,f1
+Undersampling,Random Forest,0.9987,0.5758,0.8051,0.6714
+Undersampling,XGBoost,0.9974,0.3769,0.8305,0.5185
+Undersampling,Decision Tree,0.979,0.062,0.822,0.1153
+SMOTE,Random Forest,0.9995,0.91,0.7712,0.8349
+SMOTE,XGBoost,0.9994,0.8667,0.7712,0.8161
+SMOTE,Decision Tree,0.9971,0.3333,0.7458,0.4607
