@@ -129,6 +129,23 @@ complementa a classe minoritária, generalizando muito melhor para o cenário
 real de produção. Resultados completos em
 `outputs/comparacao_balanceamento.csv`.
 
+## Simulador ao vivo no dashboard
+
+`exportar_modelo_web.py` exporta o Random Forest com os melhores
+hiperparâmetros (encontrados em `validacao_cruzada.py`) em formato JSON —
+cada árvore vira uma estrutura de nós que o próprio navegador percorre em
+JavaScript, sem precisar de um backend Python em produção.
+
+```bash
+python exportar_modelo_web.py
+```
+
+No dashboard, a seção "Teste você mesmo" deixa escolher uma transação real
+de exemplo e ajustar **Valor** e **Horário** (os únicos dois campos com
+significado no mundo real — as outras 28 variáveis, V1-V28, são componentes
+anonimizados por PCA e não têm um valor "editável" que faça sentido) pra ver
+a previsão de fraude mudar instantaneamente.
+
 ## Extensões futuras (fora do escopo atual)
 
 - Interface simples (ex.: Streamlit) para testar uma transação manualmente.
