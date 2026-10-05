@@ -176,4 +176,8 @@ pronto para produção.
 
 ## Extensões futuras (fora do escopo atual)
 
-- Interface simples (ex.: Streamlit) para testar uma transação manualmente.
+Todos os itens planejados originalmente já foram implementados (validação
+cruzada, otimização de hiperparâmetros, comparação com SMOTE, e um
+simulador interativo — que acabou substituindo a ideia original de uma
+interface separada em Streamlit, já que roda direto no dashboard, no
+navegador, sem servidor).
