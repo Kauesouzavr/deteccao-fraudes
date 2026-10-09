@@ -52,6 +52,11 @@
   /* Scrollbar / seleção */
   --scrollbar-thumb: rgba(11, 14, 26, 0.18);
   --scrollbar-thumb-hover: rgba(11, 14, 26, 0.3);
+
+  /* Faixa de destaque do hero */
+  --hero-gradient: linear-gradient(135deg, #2f3ced 0%, #4338d6 48%, #1c1f6e 100%);
+  --hero-text-secondary: rgba(255, 255, 255, 0.78);
+  --hero-divider: rgba(255, 255, 255, 0.22);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -170,6 +175,25 @@ body {
 .nav-link:hover {
   color: var(--text-primary);
   background: var(--surface-card-hover);
+}
+
+.nav-link-accent {
+  color: var(--accent-contrast);
+  opacity: 0.82;
+}
+
+.nav-link-accent:hover {
+  opacity: 1;
+  background: color-mix(in srgb, var(--accent-contrast) 14%, transparent);
+}
+
+.nav-icon-accent {
+  color: var(--accent-contrast);
+  background: color-mix(in srgb, var(--accent-contrast) 14%, transparent);
+}
+
+.nav-icon-accent:hover {
+  background: color-mix(in srgb, var(--accent-contrast) 24%, transparent);
 }
 
 .panel {

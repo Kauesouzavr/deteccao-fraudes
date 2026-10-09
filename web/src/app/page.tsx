@@ -38,33 +38,25 @@ export default function Home() {
     <>
       <Nav />
       <main className="flex-1">
-        {/* Hero — o mecanismo do produto (modelo rodando ao vivo) é a primeira coisa que o visitante vê */}
-        <section id="simulador" className="pt-14 pb-16 scroll-mt-[60px]">
-          <div className="mx-auto max-w-5xl px-6">
-            <div className="grid gap-10 lg:grid-cols-[1.05fr_1fr] lg:items-start">
+        {/* Hero — faixa de marca forte, estilo site institucional de banco, com o mecanismo
+            do produto (modelo rodando ao vivo) flutuando por cima como o "produto em destaque" */}
+        <section id="simulador" className="scroll-mt-[60px]" style={{ background: "var(--hero-gradient)" }}>
+          <div className="mx-auto max-w-5xl px-6 pt-14 pb-20 sm:pb-24">
+            <div className="grid gap-10 lg:grid-cols-[1.05fr_1fr] lg:items-center">
               <div>
-                <h1
-                  className="text-3xl sm:text-[2.6rem] font-semibold tracking-tight leading-[1.08] mb-5"
-                  style={{ color: "var(--text-primary)" }}
-                >
-                  Um modelo treinado pra detectar fraude —{" "}
-                  <span style={{ color: "var(--accent)" }}>rodando ao vivo</span> bem aqui no seu
-                  navegador.
+                <h1 className="text-4xl sm:text-5xl font-bold tracking-tight leading-[1.05] mb-5 text-white">
+                  Proteção antifraude que analisa cada transação em tempo real.
                 </h1>
                 <p
-                  className="text-sm sm:text-base max-w-md leading-relaxed mb-8"
-                  style={{ color: "var(--text-secondary)" }}
+                  className="text-base sm:text-lg max-w-md leading-relaxed mb-9"
+                  style={{ color: "var(--hero-text-secondary)" }}
                 >
-                  Reprodução prática de um TCC que avaliou três modelos supervisionados no dataset
-                  público <span style={{ color: "var(--text-primary)" }}>Credit Card Fraud
-                  Detection</span> (Kaggle). Mexa nos controles ao lado: é o Random Forest de
-                  verdade respondendo, sem servidor por trás.
+                  Um modelo de machine learning treinado pra identificar risco de fraude em
+                  transações de cartão, rodando ao vivo — direto no seu navegador, sem enviar
+                  nenhum dado pra fora. Simule uma transação ao lado e veja a análise na hora.
                 </p>
 
-                <dl
-                  className="flex flex-wrap items-stretch divide-x rounded-xl overflow-hidden"
-                  style={{ borderColor: "var(--gridline)" }}
-                >
+                <dl className="flex flex-wrap items-stretch divide-x" style={{ borderColor: "var(--hero-divider)" }}>
                   {[
                     { rotulo: "Melhor F1-Score", valor: `${(melhorModelo.f1 * 100).toFixed(1)}%` },
                     { rotulo: "Modelo destaque", valor: melhorModelo.modelo },
@@ -74,22 +66,24 @@ export default function Home() {
                     },
                     { rotulo: "Taxa real de fraude", valor: `${taxaFraudeOriginal}%` },
                   ].map((item) => (
-                    <div key={item.rotulo} className="flex-1 min-w-[7.5rem] px-4 py-3 first:pl-0">
-                      <dt className="text-[11px] mb-1" style={{ color: "var(--text-muted)" }}>
+                    <div
+                      key={item.rotulo}
+                      className="flex-1 min-w-[7.5rem] px-4 py-1 first:pl-0"
+                      style={{ borderColor: "var(--hero-divider)" }}
+                    >
+                      <dt className="text-[11px] mb-1" style={{ color: "var(--hero-text-secondary)" }}>
                         {item.rotulo}
                       </dt>
-                      <dd
-                        className="font-mono text-base font-semibold tabular-nums"
-                        style={{ color: "var(--text-primary)" }}
-                      >
-                        {item.valor}
-                      </dd>
+                      <dd className="font-mono text-lg font-bold tabular-nums text-white">{item.valor}</dd>
                     </div>
                   ))}
                 </dl>
               </div>
 
-              <div className="panel p-5 sm:p-6">
+              <div
+                className="rounded-2xl p-5 sm:p-6 lg:-my-6"
+                style={{ background: "var(--surface-card)", boxShadow: "0 24px 60px -16px rgba(5, 7, 20, 0.55)" }}
+              >
                 <PredictorDemo />
               </div>
             </div>
