@@ -65,7 +65,7 @@ export function BalancingComparisonChart({ linhas }: { linhas: ComparacaoBalance
                             </span>
                           </div>
                           <span
-                            className="text-[9px] mb-1 font-medium tabular-nums"
+                            className="font-mono text-[9px] mb-1 font-medium tabular-nums"
                             style={{ color: "var(--text-secondary)" }}
                           >
                             {(v * 100).toFixed(0)}

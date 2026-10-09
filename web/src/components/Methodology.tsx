@@ -39,7 +39,7 @@ export function Methodology() {
           <div className="flex items-center gap-2.5 mb-2">
             <span
               className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[11px] font-semibold tabular-nums"
-              style={{ background: "var(--series-1)", color: "white" }}
+              style={{ background: "var(--accent)", color: "var(--accent-contrast)" }}
             >
               {i + 1}
             </span>

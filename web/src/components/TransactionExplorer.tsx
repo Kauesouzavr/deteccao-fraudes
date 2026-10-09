@@ -36,7 +36,7 @@ export function TransactionExplorer({ amostras }: { amostras: AmostraTransacao[]
             className="rounded-full px-3.5 py-1.5 text-xs font-medium transition-colors cursor-pointer"
             style={
               filtro === valor
-                ? { background: "var(--series-1)", color: "white" }
+                ? { background: "var(--accent)", color: "var(--accent-contrast)" }
                 : { background: "var(--surface-card-hover)", color: "var(--text-secondary)" }
             }
           >
@@ -60,16 +60,13 @@ export function TransactionExplorer({ amostras }: { amostras: AmostraTransacao[]
 function TransactionCard({ amostra }: { amostra: AmostraTransacao }) {
   const fraude = amostra.classeReal === 1;
   return (
-    <div
-      className="rounded-xl p-4"
-      style={{ background: "var(--surface-card)", border: "1px solid var(--border)" }}
-    >
+    <div className="panel p-4">
       <div className="flex items-start justify-between mb-3">
         <div>
-          <p className="text-sm font-semibold tabular-nums" style={{ color: "var(--text-primary)" }}>
+          <p className="font-mono text-sm font-semibold tabular-nums" style={{ color: "var(--text-primary)" }}>
             R$ {amostra.valor.toFixed(2)}
           </p>
-          <p className="text-[11px] tabular-nums" style={{ color: "var(--text-muted)" }}>
+          <p className="font-mono text-[11px] tabular-nums" style={{ color: "var(--text-muted)" }}>
             t = {amostra.tempoSegundos.toLocaleString("pt-BR")}s
           </p>
         </div>
@@ -93,15 +90,22 @@ function TransactionCard({ amostra }: { amostra: AmostraTransacao }) {
             <div key={modelo} className="flex items-center justify-between text-xs">
               <span style={{ color: "var(--text-secondary)" }}>{modelo}</span>
               <span className="flex items-center gap-1.5">
-                <span className="tabular-nums" style={{ color: "var(--text-muted)" }}>
+                <span className="font-mono tabular-nums" style={{ color: "var(--text-muted)" }}>
                   {(previsao.probabilidadeFraude * 100).toFixed(0)}%
                 </span>
-                <span
-                  className="font-medium"
-                  style={{ color: acertou ? "var(--status-good)" : "var(--status-critical)" }}
+                <svg
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke={acertou ? "var(--status-good)" : "var(--status-critical)"}
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-label={acertou ? "Acertou" : "Errou"}
                 >
-                  {acertou ? "✓" : "✗"}
-                </span>
+                  {acertou ? <path d="M20 6 9 17l-5-5" /> : <path d="M18 6 6 18M6 6l12 12" />}
+                </svg>
               </span>
             </div>
           );

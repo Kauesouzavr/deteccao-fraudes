@@ -59,7 +59,7 @@ export function MetricsChart({ metricas }: { metricas: MetricaModelo[] }) {
                       </span>
                     </div>
                     <span
-                      className="text-[10px] mb-1 font-medium tabular-nums"
+                      className="font-mono text-[10px] mb-1 font-medium tabular-nums"
                       style={{ color: "var(--text-secondary)" }}
                     >
                       {(valor * 100).toFixed(1)}

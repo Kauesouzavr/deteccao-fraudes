@@ -1,6 +1,6 @@
 import dados from "../../public/dados/resultados.json";
 import type { DadosResultados, NomeModelo } from "@/lib/types";
-import { StatTile } from "@/components/StatTile";
+import { Nav } from "@/components/Nav";
 import { MetricsChart } from "@/components/MetricsChart";
 import { FeatureImportanceChart } from "@/components/FeatureImportanceChart";
 import { ConfusionMatrix } from "@/components/ConfusionMatrix";
@@ -35,163 +35,163 @@ export default function Home() {
   ).toFixed(2);
 
   return (
-    <main className="flex-1">
-      {/* Hero */}
-      <section className="pt-20 pb-14">
-        <div className="mx-auto max-w-5xl px-6">
-          <p
-            className="text-xs font-semibold uppercase tracking-wide mb-4"
-            style={{ color: "var(--series-1)" }}
-          >
-            Machine Learning · Detecção de Fraudes
-          </p>
-          <h1
-            className="text-3xl sm:text-4xl font-semibold tracking-tight mb-4 max-w-2xl"
-            style={{ color: "var(--text-primary)" }}
-          >
-            Detectando fraudes em transações de cartão de crédito com três modelos
-            supervisionados
-          </h1>
-          <p className="text-sm sm:text-base max-w-2xl leading-relaxed mb-10" style={{ color: "var(--text-secondary)" }}>
-            Reprodução prática de um TCC que avaliou Random Forest, XGBoost e Decision Tree
-            no dataset público{" "}
-            <span style={{ color: "var(--text-primary)" }}>Credit Card Fraud Detection</span> (Kaggle),
-            com {infoDataset.totalTransacoesOriginal.toLocaleString("pt-BR")} transações reais e
-            apenas {taxaFraudeOriginal}% de fraude.
-          </p>
+    <>
+      <Nav />
+      <main className="flex-1">
+        {/* Hero — o mecanismo do produto (modelo rodando ao vivo) é a primeira coisa que o visitante vê */}
+        <section id="simulador" className="pt-14 pb-16 scroll-mt-[60px]">
+          <div className="mx-auto max-w-5xl px-6">
+            <div className="grid gap-10 lg:grid-cols-[1.05fr_1fr] lg:items-start">
+              <div>
+                <h1
+                  className="text-3xl sm:text-[2.6rem] font-semibold tracking-tight leading-[1.08] mb-5"
+                  style={{ color: "var(--text-primary)" }}
+                >
+                  Um modelo treinado pra detectar fraude —{" "}
+                  <span style={{ color: "var(--accent)" }}>rodando ao vivo</span> bem aqui no seu
+                  navegador.
+                </h1>
+                <p
+                  className="text-sm sm:text-base max-w-md leading-relaxed mb-8"
+                  style={{ color: "var(--text-secondary)" }}
+                >
+                  Reprodução prática de um TCC que avaliou três modelos supervisionados no dataset
+                  público <span style={{ color: "var(--text-primary)" }}>Credit Card Fraud
+                  Detection</span> (Kaggle). Mexa nos controles ao lado: é o Random Forest de
+                  verdade respondendo, sem servidor por trás.
+                </p>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            <StatTile rotulo="Melhor F1-Score" valor={`${(melhorModelo.f1 * 100).toFixed(1)}%`} destaque />
-            <StatTile rotulo="Modelo destaque" valor={melhorModelo.modelo} />
-            <StatTile
-              rotulo="Transações analisadas"
-              valor={infoDataset.totalTransacoesOriginal.toLocaleString("pt-BR")}
-            />
-            <StatTile
-              rotulo="Fraudes no dataset"
-              valor={infoDataset.totalFraudesOriginal.toLocaleString("pt-BR")}
-            />
-          </div>
-        </div>
-      </section>
+                <dl
+                  className="flex flex-wrap items-stretch divide-x rounded-xl overflow-hidden"
+                  style={{ borderColor: "var(--gridline)" }}
+                >
+                  {[
+                    { rotulo: "Melhor F1-Score", valor: `${(melhorModelo.f1 * 100).toFixed(1)}%` },
+                    { rotulo: "Modelo destaque", valor: melhorModelo.modelo },
+                    {
+                      rotulo: "Transações analisadas",
+                      valor: infoDataset.totalTransacoesOriginal.toLocaleString("pt-BR"),
+                    },
+                    { rotulo: "Taxa real de fraude", valor: `${taxaFraudeOriginal}%` },
+                  ].map((item) => (
+                    <div key={item.rotulo} className="flex-1 min-w-[7.5rem] px-4 py-3 first:pl-0">
+                      <dt className="text-[11px] mb-1" style={{ color: "var(--text-muted)" }}>
+                        {item.rotulo}
+                      </dt>
+                      <dd
+                        className="font-mono text-base font-semibold tabular-nums"
+                        style={{ color: "var(--text-primary)" }}
+                      >
+                        {item.valor}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
 
-      <Section
-        titulo="Teste você mesmo"
-        descricao="Simulador do Random Forest otimizado rodando ao vivo no seu navegador (sem servidor). Escolha uma transação real e ajuste valor e horário pra ver a previsão mudar na hora."
-      >
-        <div
-          className="rounded-xl p-6 sm:p-8"
-          style={{ background: "var(--surface-card)", border: "1px solid var(--border)" }}
-        >
-          <PredictorDemo />
-        </div>
-      </Section>
-
-      <Section
-        titulo="Metodologia"
-        descricao="Pipeline de pré-processamento e treinamento, na mesma ordem usada no TCC original."
-      >
-        <Methodology />
-      </Section>
-
-      <Section
-        titulo="Comparação de desempenho"
-        descricao={`Métricas calculadas no conjunto de teste (${infoDataset.totalTeste.toLocaleString(
-          "pt-BR"
-        )} transações, ${infoDataset.totalFraudesTeste} fraudes).`}
-      >
-        <div
-          className="rounded-xl p-6 sm:p-8"
-          style={{ background: "var(--surface-card)", border: "1px solid var(--border)" }}
-        >
-          <MetricsChart metricas={metricas} />
-        </div>
-      </Section>
-
-      {validacaoCruzada && comparacaoHiperparametros && (
-        <Section
-          titulo="Validação cruzada e otimização de hiperparâmetros"
-          descricao="5-fold cross-validation confirma que as métricas são estáveis, e uma busca de hiperparâmetros (RandomizedSearchCV, 20 combinações) testa se dá pra melhorar os modelos padrão."
-        >
-          <div className="grid gap-4 lg:grid-cols-2">
-            <div
-              className="rounded-xl p-6 sm:p-8"
-              style={{ background: "var(--surface-card)", border: "1px solid var(--border)" }}
-            >
-              <h3 className="text-sm font-semibold mb-5" style={{ color: "var(--text-primary)" }}>
-                Estabilidade (média ± desvio em 5 folds)
-              </h3>
-              <CrossValidationTable linhas={validacaoCruzada} />
+              <div className="panel p-5 sm:p-6">
+                <PredictorDemo />
+              </div>
             </div>
-            <div
-              className="rounded-xl p-6 sm:p-8"
-              style={{ background: "var(--surface-card)", border: "1px solid var(--border)" }}
-            >
-              <h3 className="text-sm font-semibold mb-5" style={{ color: "var(--text-primary)" }}>
-                Parâmetros padrão vs. otimizados
-              </h3>
-              <HyperparameterTuningTable linhas={comparacaoHiperparametros} />
-              <p className="mt-5 text-[11px] leading-relaxed" style={{ color: "var(--text-muted)" }}>
-                Random Forest e XGBoost já estavam bem ajustados. A Decision Tree tinha
-                overfitting sem limite de profundidade — otimizada, ganhou quase 3,4 pontos de F1.
+          </div>
+        </section>
+
+        <Section
+          titulo="Metodologia"
+          descricao="Pipeline de pré-processamento e treinamento, na mesma ordem usada no TCC original."
+        >
+          <Methodology />
+        </Section>
+
+        <Section
+          id="desempenho"
+          titulo="Comparação de desempenho"
+          descricao={`Métricas calculadas no conjunto de teste (${infoDataset.totalTeste.toLocaleString(
+            "pt-BR"
+          )} transações, ${infoDataset.totalFraudesTeste} fraudes).`}
+        >
+          <div className="panel p-6 sm:p-8">
+            <MetricsChart metricas={metricas} />
+          </div>
+        </Section>
+
+        {validacaoCruzada && comparacaoHiperparametros && (
+          <Section
+            id="validacao"
+            titulo="Validação cruzada e otimização de hiperparâmetros"
+            descricao="5-fold cross-validation confirma que as métricas são estáveis, e uma busca de hiperparâmetros (RandomizedSearchCV, 20 combinações) testa se dá pra melhorar os modelos padrão."
+          >
+            <div className="grid gap-4 lg:grid-cols-2">
+              <div className="panel p-6 sm:p-8">
+                <h3 className="text-sm font-semibold mb-5" style={{ color: "var(--text-primary)" }}>
+                  Estabilidade (média ± desvio em 5 folds)
+                </h3>
+                <CrossValidationTable linhas={validacaoCruzada} />
+              </div>
+              <div className="panel p-6 sm:p-8">
+                <h3 className="text-sm font-semibold mb-5" style={{ color: "var(--text-primary)" }}>
+                  Parâmetros padrão vs. otimizados
+                </h3>
+                <HyperparameterTuningTable linhas={comparacaoHiperparametros} />
+                <p className="mt-5 text-[11px] leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                  Random Forest e XGBoost já estavam bem ajustados. A Decision Tree tinha
+                  overfitting sem limite de profundidade — otimizada, ganhou quase 3,4 pontos de F1.
+                </p>
+              </div>
+            </div>
+          </Section>
+        )}
+
+        {comparacaoBalanceamento && (
+          <Section
+            id="balanceamento"
+            titulo="Undersampling vs. SMOTE"
+            descricao="Metodologia mais rigorosa: balanceamento aplicado só no treino, avaliado contra a distribuição real de fraude (~0,17%) — bem mais desafiadora que o teste balanceado usado acima."
+          >
+            <div className="panel p-6 sm:p-8">
+              <BalancingComparisonChart linhas={comparacaoBalanceamento} />
+              <p className="mt-8 text-xs leading-relaxed max-w-2xl" style={{ color: "var(--text-secondary)" }}>
+                O undersampling descarta ~98% das transações legítimas de treino, então os
+                modelos veem pouca variedade de padrões normais e erram muito mais contra o
+                volume real — a precisão da Decision Tree despenca pra 6% (1 em cada 16 alertas é
+                real). O SMOTE mantém todos os dados legítimos reais e só complementa a classe
+                minoritária com exemplos sintéticos, generalizando bem melhor.
               </p>
             </div>
-          </div>
-        </Section>
-      )}
+          </Section>
+        )}
 
-      {comparacaoBalanceamento && (
         <Section
-          titulo="Undersampling vs. SMOTE"
-          descricao="Metodologia mais rigorosa: balanceamento aplicado só no treino, avaliado contra a distribuição real de fraude (~0,17%) — bem mais desafiadora que o teste balanceado usado acima."
+          id="matrizes"
+          titulo="Matrizes de confusão"
+          descricao="Como cada modelo classificou as transações reais do conjunto de teste."
         >
-          <div
-            className="rounded-xl p-6 sm:p-8"
-            style={{ background: "var(--surface-card)", border: "1px solid var(--border)" }}
-          >
-            <BalancingComparisonChart linhas={comparacaoBalanceamento} />
-            <p className="mt-8 text-xs leading-relaxed max-w-2xl" style={{ color: "var(--text-secondary)" }}>
-              O undersampling descarta ~98% das transações legítimas de treino, então os
-              modelos veem pouca variedade de padrões normais e erram muito mais contra o
-              volume real — a precisão da Decision Tree despenca pra 6% (1 em cada 16 alertas é
-              real). O SMOTE mantém todos os dados legítimos reais e só complementa a classe
-              minoritária com exemplos sintéticos, generalizando bem melhor.
-            </p>
+          <div className="grid gap-4 sm:grid-cols-3">
+            {MODELOS.map((modelo) => (
+              <ConfusionMatrix key={modelo} nome={modelo} matriz={matrizesConfusao[modelo]} />
+            ))}
           </div>
         </Section>
-      )}
 
-      <Section
-        titulo="Matrizes de confusão"
-        descricao="Como cada modelo classificou as transações reais do conjunto de teste."
-      >
-        <div className="grid gap-4 sm:grid-cols-3">
-          {MODELOS.map((modelo) => (
-            <ConfusionMatrix key={modelo} nome={modelo} matriz={matrizesConfusao[modelo]} />
-          ))}
-        </div>
-      </Section>
-
-      <Section
-        titulo="Importância das features"
-        descricao="Quais variáveis mais pesaram na decisão de cada modelo (top 10)."
-      >
-        <div
-          className="rounded-xl p-6 sm:p-8"
-          style={{ background: "var(--surface-card)", border: "1px solid var(--border)" }}
+        <Section
+          titulo="Importância das features"
+          descricao="Quais variáveis mais pesaram na decisão de cada modelo (top 10)."
         >
-          <FeatureImportanceChart dados={importanciaFeatures} />
-        </div>
-      </Section>
+          <div className="panel p-6 sm:p-8">
+            <FeatureImportanceChart dados={importanciaFeatures} />
+          </div>
+        </Section>
 
-      <Section
-        titulo="Explorador de transações"
-        descricao="Transações reais do conjunto de teste — veja o que cada modelo previu e compare com o valor real."
-      >
-        <TransactionExplorer amostras={amostrasTransacoes} />
-      </Section>
+        <Section
+          id="transacoes"
+          titulo="Explorador de transações"
+          descricao="Transações reais do conjunto de teste — veja o que cada modelo previu e compare com o valor real."
+        >
+          <TransactionExplorer amostras={amostrasTransacoes} />
+        </Section>
 
-      <Footer />
-    </main>
+        <Footer />
+      </main>
+    </>
   );
 }
