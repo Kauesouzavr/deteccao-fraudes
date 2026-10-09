@@ -12,7 +12,7 @@ export function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             className="font-medium hover:underline"
-            style={{ color: "var(--series-1)" }}
+            style={{ color: "var(--accent)" }}
           >
             Código no GitHub
           </a>
@@ -21,7 +21,7 @@ export function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             className="font-medium hover:underline"
-            style={{ color: "var(--series-1)" }}
+            style={{ color: "var(--accent)" }}
           >
             Dataset no Kaggle
           </a>

@@ -11,7 +11,7 @@ function lerTemaAtual(): Tema {
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 
-export function ThemeToggle() {
+export function ThemeToggle({ variant = "default" }: { variant?: "default" | "accent" }) {
   const [tema, setTema] = useState<Tema | null>(null);
 
   useEffect(() => {
@@ -31,8 +31,14 @@ export function ThemeToggle() {
     <button
       onClick={alternar}
       aria-label={tema === "dark" ? "Mudar para tema claro" : "Mudar para tema escuro"}
-      className="flex h-8 w-8 items-center justify-center rounded-full transition-colors cursor-pointer"
-      style={{ background: "var(--surface-card-hover)", color: "var(--text-secondary)" }}
+      className={`flex h-8 w-8 items-center justify-center rounded-full transition-colors cursor-pointer ${
+        variant === "accent" ? "nav-icon-accent" : ""
+      }`}
+      style={
+        variant === "accent"
+          ? undefined
+          : { background: "var(--surface-card-hover)", color: "var(--text-secondary)" }
+      }
     >
       {tema === "dark" ? (
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
