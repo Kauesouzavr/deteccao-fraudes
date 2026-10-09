@@ -45,14 +45,14 @@ export function HyperparameterTuningTable({ linhas }: { linhas: ComparacaoHiperp
                     {modelo}
                   </span>
                 </td>
-                <td className="text-right py-3 px-3 tabular-nums" style={{ color: "var(--text-secondary)" }}>
+                <td className="font-mono text-right py-3 px-3 tabular-nums" style={{ color: "var(--text-secondary)" }}>
                   {(padrao.f1 * 100).toFixed(2)}%
                 </td>
-                <td className="text-right py-3 px-3 tabular-nums font-medium" style={{ color: "var(--text-primary)" }}>
+                <td className="font-mono text-right py-3 px-3 tabular-nums font-medium" style={{ color: "var(--text-primary)" }}>
                   {(otimizado.f1 * 100).toFixed(2)}%
                 </td>
                 <td
-                  className="text-right py-3 pl-3 tabular-nums font-medium whitespace-nowrap"
+                  className="font-mono text-right py-3 pl-3 tabular-nums font-medium whitespace-nowrap"
                   style={{ color: melhorou ? "var(--status-good)" : "var(--text-muted)" }}
                 >
                   {delta >= 0 ? "+" : ""}

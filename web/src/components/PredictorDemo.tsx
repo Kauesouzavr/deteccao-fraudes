@@ -74,7 +74,7 @@ export function PredictorDemo() {
   }
 
   return (
-    <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_300px]">
+    <div className="flex flex-col gap-6">
       <div>
         <p className="text-xs font-medium mb-3" style={{ color: "var(--text-muted)" }}>
           1. Escolha uma transação real de exemplo
@@ -89,11 +89,11 @@ export function PredictorDemo() {
                 onClick={() => selecionarExemplo(ex)}
                 className="rounded-lg p-3 text-left transition-colors cursor-pointer"
                 style={{
-                  background: ativo ? "var(--surface-card-hover)" : "var(--surface-card)",
-                  border: ativo ? "1px solid var(--series-1)" : "1px solid var(--border)",
+                  background: ativo ? "var(--accent-soft)" : "var(--surface-sunken)",
+                  border: ativo ? "1px solid var(--accent)" : "1px solid var(--border)",
                 }}
               >
-                <p className="text-xs font-semibold tabular-nums" style={{ color: "var(--text-primary)" }}>
+                <p className="font-mono text-xs font-semibold tabular-nums" style={{ color: "var(--text-primary)" }}>
                   R$ {ex.valorOriginal.toFixed(2)}
                 </p>
                 <span
@@ -118,7 +118,7 @@ export function PredictorDemo() {
           <label className="flex flex-col gap-2">
             <span className="flex justify-between text-xs" style={{ color: "var(--text-secondary)" }}>
               <span>Valor da transação</span>
-              <span className="tabular-nums font-medium" style={{ color: "var(--text-primary)" }}>
+              <span className="font-mono tabular-nums font-medium" style={{ color: "var(--text-primary)" }}>
                 R$ {valor.toFixed(2)}
               </span>
             </span>
@@ -129,13 +129,13 @@ export function PredictorDemo() {
               step={1}
               value={valor}
               onChange={(e) => setValor(Number(e.target.value))}
-              className="w-full accent-[var(--series-1)]"
+              className="w-full accent-[var(--accent)]"
             />
           </label>
           <label className="flex flex-col gap-2">
             <span className="flex justify-between text-xs" style={{ color: "var(--text-secondary)" }}>
               <span>Horário (desde o início do dataset)</span>
-              <span className="tabular-nums font-medium" style={{ color: "var(--text-primary)" }}>
+              <span className="font-mono tabular-nums font-medium" style={{ color: "var(--text-primary)" }}>
                 {horas.toFixed(1)}h
               </span>
             </span>
@@ -146,24 +146,25 @@ export function PredictorDemo() {
               step={0.5}
               value={horas}
               onChange={(e) => setHoras(Number(e.target.value))}
-              className="w-full accent-[var(--series-1)]"
+              className="w-full accent-[var(--accent)]"
             />
           </label>
         </div>
       </div>
 
       <div
-        className="rounded-xl p-6 flex flex-col items-center justify-center text-center"
+        className="rounded-xl p-6 flex flex-col items-center justify-center text-center transition-colors duration-300"
         style={{
           background: resultado?.fraude ? "var(--status-critical-bg)" : "var(--status-good-bg)",
           border: `1px solid ${resultado?.fraude ? "var(--status-critical)" : "var(--status-good)"}`,
+          boxShadow: "var(--shadow-card)",
         }}
       >
         <p className="text-xs font-medium mb-2" style={{ color: "var(--text-muted)" }}>
           Previsão do Random Forest (ao vivo, no seu navegador)
         </p>
         <p
-          className="text-3xl font-bold tabular-nums mb-1"
+          className="font-mono text-4xl font-semibold tabular-nums mb-1"
           style={{ color: resultado?.fraude ? "var(--status-critical)" : "var(--status-good)" }}
         >
           {resultado ? `${(resultado.prob * 100).toFixed(1)}%` : "—"}

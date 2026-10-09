@@ -24,7 +24,7 @@ export function FeatureImportanceChart({
             className="rounded-full px-3.5 py-1.5 text-xs font-medium transition-colors cursor-pointer"
             style={
               modeloAtivo === modelo
-                ? { background: "var(--series-1)", color: "white" }
+                ? { background: "var(--accent)", color: "var(--accent-contrast)" }
                 : { background: "var(--surface-card-hover)", color: "var(--text-secondary)" }
             }
           >
@@ -55,7 +55,7 @@ export function FeatureImportanceChart({
               />
             </div>
             <span
-              className="w-14 shrink-0 text-right text-xs tabular-nums font-medium"
+              className="font-mono w-14 shrink-0 text-right text-xs tabular-nums font-medium"
               style={{ color: "var(--text-secondary)" }}
             >
               {(f.importancia * 100).toFixed(1)}%

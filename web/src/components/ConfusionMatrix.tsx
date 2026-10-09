@@ -1,6 +1,6 @@
 import type { MatrizConfusao, NomeModelo } from "@/lib/types";
 
-const SEQ = ["#cde2fb", "#86b6ef", "#3987e5", "#1c5cab", "#0d366b"];
+const SEQ = ["var(--seq-100)", "var(--seq-250)", "var(--seq-400)", "var(--seq-550)", "var(--seq-700)"];
 
 function corParaValor(valor: number, max: number) {
   const proporcao = valor / max;
@@ -12,7 +12,7 @@ function corParaValor(valor: number, max: number) {
 }
 
 function corTexto(valor: number, max: number) {
-  return valor / max > 0.55 ? "#ffffff" : "var(--text-primary)";
+  return valor / max > 0.55 ? "var(--accent-contrast)" : "var(--text-primary)";
 }
 
 export function ConfusionMatrix({
@@ -26,10 +26,7 @@ export function ConfusionMatrix({
   const max = Math.max(tn, fp, fn, tp);
 
   return (
-    <div
-      className="rounded-xl p-5"
-      style={{ background: "var(--surface-card)", border: "1px solid var(--border)" }}
-    >
+    <div className="panel p-5">
       <h3 className="text-sm font-semibold mb-4" style={{ color: "var(--text-primary)" }}>
         {nome}
       </h3>

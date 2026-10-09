@@ -1,14 +1,16 @@
 export function Section({
+  id,
   titulo,
   descricao,
   children,
 }: {
+  id?: string;
   titulo: string;
   descricao?: string;
   children: React.ReactNode;
 }) {
   return (
-    <section className="py-14 border-t" style={{ borderColor: "var(--gridline)" }}>
+    <section id={id} className="py-14 border-t scroll-mt-[60px]" style={{ borderColor: "var(--gridline)" }}>
       <div className="mx-auto max-w-5xl px-6">
         <h2 className="text-xl font-semibold mb-1" style={{ color: "var(--text-primary)" }}>
           {titulo}

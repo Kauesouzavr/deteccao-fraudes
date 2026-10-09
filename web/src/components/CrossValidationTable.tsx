@@ -45,7 +45,7 @@ export function CrossValidationTable({ linhas }: { linhas: ValidacaoCruzadaLinha
                 </span>
               </td>
               {COLUNAS.map((c) => (
-                <td key={c.media} className="text-right py-3 px-3 tabular-nums whitespace-nowrap">
+                <td key={c.media} className="font-mono text-right py-3 px-3 tabular-nums whitespace-nowrap">
                   <span style={{ color: "var(--text-secondary)" }}>
                     {(linha[c.media] * 100).toFixed(1)}%
                   </span>
