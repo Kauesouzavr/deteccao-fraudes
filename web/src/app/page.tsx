@@ -12,6 +12,7 @@ import { CrossValidationTable } from "@/components/CrossValidationTable";
 import { HyperparameterTuningTable } from "@/components/HyperparameterTuningTable";
 import { BalancingComparisonChart } from "@/components/BalancingComparisonChart";
 import { PredictorDemo } from "@/components/PredictorDemo";
+import { NetworkScene } from "@/components/NetworkScene";
 
 const dadosResultados = dados as DadosResultados;
 const MODELOS: NomeModelo[] = ["Random Forest", "XGBoost", "Decision Tree"];
@@ -40,12 +41,26 @@ export default function Home() {
       <main className="flex-1">
         {/* Hero — faixa de marca forte, estilo site institucional de banco, com o mecanismo
             do produto (modelo rodando ao vivo) flutuando por cima como o "produto em destaque" */}
-        <section id="simulador" className="scroll-mt-[60px]" style={{ background: "var(--hero-gradient)" }}>
-          <div className="mx-auto max-w-5xl px-6 pt-14 pb-20 sm:pb-24">
+        <section
+          id="simulador"
+          className="relative overflow-hidden scroll-mt-[60px]"
+          style={{ background: "var(--hero-gradient)" }}
+        >
+          <div className="pointer-events-none absolute inset-0">
+            <NetworkScene />
+          </div>
+          <div className="relative mx-auto max-w-5xl px-6 pt-16 pb-20 sm:pb-24">
             <div className="grid gap-10 lg:grid-cols-[1.05fr_1fr] lg:items-center">
               <div>
-                <h1 className="text-4xl sm:text-5xl font-bold tracking-tight leading-[1.05] mb-5 text-white">
-                  Proteção antifraude que analisa cada transação em tempo real.
+                <span
+                  className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-semibold mb-5"
+                  style={{ background: "var(--brand-alert-soft)", color: "var(--brand-alert)" }}
+                >
+                  <span className="h-1.5 w-1.5 rounded-full" style={{ background: "currentColor" }} />
+                  Análise de risco em tempo real
+                </span>
+                <h1 className="text-5xl sm:text-6xl font-bold tracking-tight leading-[0.98] mb-5 text-white">
+                  Pare a fraude antes dela acontecer.
                 </h1>
                 <p
                   className="text-base sm:text-lg max-w-md leading-relaxed mb-9"
@@ -56,7 +71,7 @@ export default function Home() {
                   nenhum dado pra fora. Simule uma transação ao lado e veja a análise na hora.
                 </p>
 
-                <dl className="flex flex-wrap items-stretch divide-x" style={{ borderColor: "var(--hero-divider)" }}>
+                <dl className="flex flex-wrap gap-3">
                   {[
                     { rotulo: "Melhor F1-Score", valor: `${(melhorModelo.f1 * 100).toFixed(1)}%` },
                     { rotulo: "Modelo destaque", valor: melhorModelo.modelo },
@@ -68,13 +83,17 @@ export default function Home() {
                   ].map((item) => (
                     <div
                       key={item.rotulo}
-                      className="flex-1 min-w-[7.5rem] px-4 py-1 first:pl-0"
-                      style={{ borderColor: "var(--hero-divider)" }}
+                      className="rounded-2xl px-4 py-3"
+                      style={{
+                        background:
+                          "linear-gradient(135deg, color-mix(in srgb, var(--accent) 35%, transparent), color-mix(in srgb, var(--accent) 8%, transparent))",
+                        border: "1px solid color-mix(in srgb, var(--accent) 45%, transparent)",
+                      }}
                     >
-                      <dt className="text-[11px] mb-1" style={{ color: "var(--hero-text-secondary)" }}>
+                      <dt className="text-[10px] mb-1" style={{ color: "var(--hero-text-secondary)" }}>
                         {item.rotulo}
                       </dt>
-                      <dd className="font-mono text-lg font-bold tabular-nums text-white">{item.valor}</dd>
+                      <dd className="font-mono text-xl font-bold tabular-nums text-white">{item.valor}</dd>
                     </div>
                   ))}
                 </dl>

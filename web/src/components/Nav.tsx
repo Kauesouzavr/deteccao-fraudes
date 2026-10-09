@@ -10,19 +10,23 @@ const LINKS = [
 export function Nav() {
   return (
     <header
-      className="sticky top-0 z-50"
-      style={{ background: "var(--accent)", color: "var(--accent-contrast)" }}
+      className="sticky top-0 z-50 backdrop-blur-md"
+      style={{
+        background: "color-mix(in srgb, var(--brand-navy-1) 92%, transparent)",
+        borderBottom: "1px solid var(--brand-divider)",
+        color: "var(--brand-text)",
+      }}
     >
       <div className="mx-auto max-w-5xl px-6 h-[64px] flex items-center justify-between gap-6">
         <a href="#" className="flex items-center gap-2.5 shrink-0">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden>
             <path
               d="M12 2 4 5v6c0 5.2 3.4 9.4 8 11 4.6-1.6 8-5.8 8-11V5l-8-3Z"
-              fill="var(--accent-contrast)"
+              fill="var(--accent)"
             />
             <path
               d="m9 12 2 2 4-4"
-              stroke="var(--accent)"
+              stroke="var(--brand-text)"
               strokeWidth="1.75"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -46,13 +50,13 @@ export function Nav() {
         <div className="flex items-center gap-3 shrink-0">
           <span
             className="hidden sm:flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-semibold"
-            style={{ background: "color-mix(in srgb, var(--accent-contrast) 16%, transparent)" }}
+            style={{ background: "var(--brand-alert-soft)", color: "var(--brand-alert)" }}
           >
             <span className="relative flex h-1.5 w-1.5">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full opacity-60" style={{ background: "currentColor" }} />
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full" style={{ background: "currentColor" }} />
             </span>
-            Modelo ativo no navegador
+            Monitoramento ativo
           </span>
           <a
             href="https://github.com/Kauesouzavr/deteccao-fraudes"
