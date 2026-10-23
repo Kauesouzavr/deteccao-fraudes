@@ -1,4 +1,16 @@
-# Detecção de Fraudes em Transações Financeiras
+<div align="center">
+
+<img src=".github/assets/banner.svg" alt="Detecção de Fraudes" width="100%"/>
+
+<img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"/> <img src="https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white" alt="scikit-learn"/> <img src="https://img.shields.io/badge/XGBoost-EB5424?style=for-the-badge" alt="XGBoost"/> <img src="https://img.shields.io/badge/pandas-150458?style=for-the-badge&logo=pandas&logoColor=white" alt="pandas"/> <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js"/>
+
+<a href="https://github.com/Kauesouzavr/deteccao-fraudes/actions/workflows/ci.yml"><img src="https://github.com/Kauesouzavr/deteccao-fraudes/actions/workflows/ci.yml/badge.svg" alt="CI"/></a> <a href="https://github.com/Kauesouzavr/deteccao-fraudes/actions/workflows/codeql.yml"><img src="https://github.com/Kauesouzavr/deteccao-fraudes/actions/workflows/codeql.yml/badge.svg" alt="CodeQL"/></a> <a href="https://github.com/Kauesouzavr/deteccao-fraudes/actions/workflows/secret-scan.yml"><img src="https://github.com/Kauesouzavr/deteccao-fraudes/actions/workflows/secret-scan.yml/badge.svg" alt="Secret scan"/></a>
+
+<a href="#resultados-esperados"><b>Resultados</b></a> · <a href="#undersampling-vs-smote"><b>Undersampling vs. SMOTE</b></a> · <a href="#simulador-ao-vivo-no-dashboard"><b>Simulador ao vivo</b></a> · <a href="#limitações"><b>Limitações</b></a>
+
+</div>
+
+> 🇺🇸 **In English:** credit-card fraud detection with machine learning (my undergraduate thesis, reproduced in code). Random Forest, XGBoost and Decision Tree compared with stratified cross-validation, hyperparameter search and undersampling vs. SMOTE. The best model is exported to JSON and runs entirely in the browser in an interactive Next.js dashboard.
 
 Projeto prático que reproduz a metodologia do TCC "Detecção de Atividades
 Fraudulentas em Transações Financeiras Utilizando Inteligência Artificial".
@@ -181,3 +193,7 @@ cruzada, otimização de hiperparâmetros, comparação com SMOTE, e um
 simulador interativo — que acabou substituindo a ideia original de uma
 interface separada em Streamlit, já que roda direto no dashboard, no
 navegador, sem servidor).
+
+---
+
+Feito por **Kauê Souza** · [LinkedIn](https://www.linkedin.com/in/kauesouzaproti/) · [GitHub](https://github.com/Kauesouzavr)
