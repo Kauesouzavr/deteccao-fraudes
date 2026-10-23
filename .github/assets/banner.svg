@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="1200" height="300" role="img" aria-label="Detecção de Fraudes — Machine learning em transações de cartão, com simulador no navegador">
+  <title>Detecção de Fraudes — Machine learning em transações de cartão, com simulador no navegador</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b0f17"/><stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.85" cy="0.3" r="0.6">
+      <stop offset="0" stop-color="#a855f7" stop-opacity="0.35"/><stop offset="1" stop-color="#a855f7" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="txt" x1="0" x2="1">
+      <stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#d8b4fe"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#ffffff" stroke-opacity="0.04"/>
+    </pattern>
+    <linearGradient id="scan" x1="0" x2="1"><stop offset="0" stop-color="#a855f7" stop-opacity="0"/><stop offset="0.5" stop-color="#a855f7" stop-opacity="0.9"/><stop offset="1" stop-color="#a855f7" stop-opacity="0"/></linearGradient>
+    <clipPath id="r"><rect width="1200" height="300" rx="18"/></clipPath>
+  </defs>
+  <g clip-path="url(#r)">
+    <rect width="1200" height="300" fill="url(#bg)"/>
+    <rect width="1200" height="300" fill="url(#grid)"/>
+    <rect width="1200" height="300" fill="url(#glow)">
+      <animate attributeName="opacity" values="0.7;1;0.7" dur="6s" repeatCount="indefinite"/>
+    </rect>
+    <g><line x1="1025" y1="78" x2="1062" y2="206" stroke="#ffffff" stroke-opacity="0.08"/><line x1="1025" y1="78" x2="884" y2="58" stroke="#ffffff" stroke-opacity="0.08"/><line x1="1062" y1="206" x2="884" y2="58" stroke="#ffffff" stroke-opacity="0.08"/><line x1="1062" y1="206" x2="1134" y2="64" stroke="#ffffff" stroke-opacity="0.08"/><line x1="884" y1="58" x2="1134" y2="64" stroke="#ffffff" stroke-opacity="0.08"/><line x1="884" y1="58" x2="1047" y2="189" stroke="#ffffff" stroke-opacity="0.08"/><line x1="1134" y1="64" x2="1047" y2="189" stroke="#ffffff" stroke-opacity="0.08"/><line x1="1134" y1="64" x2="889" y2="169" stroke="#ffffff" stroke-opacity="0.08"/><line x1="1047" y1="189" x2="889" y2="169" stroke="#ffffff" stroke-opacity="0.08"/><line x1="1047" y1="189" x2="969" y2="49" stroke="#ffffff" stroke-opacity="0.08"/><line x1="889" y1="169" x2="969" y2="49" stroke="#ffffff" stroke-opacity="0.08"/><line x1="889" y1="169" x2="904" y2="151" stroke="#ffffff" stroke-opacity="0.08"/><line x1="969" y1="49" x2="904" y2="151" stroke="#ffffff" stroke-opacity="0.08"/><line x1="969" y1="49" x2="1074" y2="57" stroke="#ffffff" stroke-opacity="0.08"/><line x1="904" y1="151" x2="1074" y2="57" stroke="#ffffff" stroke-opacity="0.08"/><line x1="904" y1="151" x2="983" y2="63" stroke="#ffffff" stroke-opacity="0.08"/><line x1="1074" y1="57" x2="983" y2="63" stroke="#ffffff" stroke-opacity="0.08"/><line x1="1074" y1="57" x2="1077" y2="55" stroke="#ffffff" stroke-opacity="0.08"/><line x1="983" y1="63" x2="1077" y2="55" stroke="#ffffff" stroke-opacity="0.08"/><line x1="983" y1="63" x2="923" y2="97" stroke="#ffffff" stroke-opacity="0.08"/><line x1="1077" y1="55" x2="923" y2="97" stroke="#ffffff" stroke-opacity="0.08"/><line x1="1077" y1="55" x2="891" y2="187" stroke="#ffffff" stroke-opacity="0.08"/><line x1="923" y1="97" x2="891" y2="187" stroke="#ffffff" stroke-opacity="0.08"/><line x1="923" y1="97" x2="1063" y2="52" stroke="#ffffff" stroke-opacity="0.08"/><line x1="891" y1="187" x2="1063" y2="52" stroke="#ffffff" stroke-opacity="0.08"/><circle cx="1025" cy="78" r="4" fill="#9da7b3"/><circle cx="1062" cy="206" r="4" fill="#9da7b3"/><circle cx="884" cy="58" r="4" fill="#9da7b3"/><circle cx="1134" cy="64" r="4" fill="#9da7b3"/><circle cx="1047" cy="189" r="4" fill="#9da7b3"/><circle cx="889" cy="169" r="4" fill="#9da7b3"/><circle cx="969" cy="49" r="4" fill="#9da7b3"/><circle cx="904" cy="151" r="4" fill="#9da7b3"/><circle cx="1074" cy="57" r="4" fill="#9da7b3"/><circle cx="983" cy="63" r="4" fill="#9da7b3"/><circle cx="1077" cy="55" r="4" fill="#9da7b3"/><circle cx="923" cy="97" r="4" fill="#9da7b3"/><circle cx="891" cy="187" r="4" fill="#9da7b3"/><circle cx="1063" cy="52" r="4" fill="#9da7b3"/><circle cx="889" cy="169" r="6" fill="#a855f7"/><circle cx="889" cy="169" r="6" fill="none" stroke="#a855f7" stroke-width="2"><animate attributeName="r" values="6;34" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0" dur="2s" repeatCount="indefinite"/></circle></g>
+    <rect y="0" width="260" height="2" fill="url(#scan)">
+      <animate attributeName="x" values="-260;1200" dur="4.5s" repeatCount="indefinite"/>
+    </rect>
+    <g font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="15" fill="#d8b4fe">
+      <circle cx="70" cy="64" r="5" fill="#a855f7"><animate attributeName="opacity" values="1;0.25;1" dur="1.6s" repeatCount="indefinite"/></circle>
+      <text x="84" y="69" letter-spacing="2">TCC · INTELIGÊNCIA ARTIFICIAL</text>
+    </g>
+    <text x="62" y="138" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="58" font-weight="800" fill="url(#txt)">Detecção de Fraudes</text>
+    <text x="64" y="182" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22" fill="#9da7b3">Machine learning em transações de cartão, com simulador no navegador</text>
+    <g transform="translate(64,214)"><rect width="79" height="32" rx="16" fill="#ffffff" fill-opacity="0.06" stroke="#a855f7" stroke-opacity="0.45"/><text x="39.5" y="21" text-anchor="middle" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="14" fill="#e6edf3">Python</text></g><g transform="translate(153,214)"><rect width="131" height="32" rx="16" fill="#ffffff" fill-opacity="0.06" stroke="#a855f7" stroke-opacity="0.45"/><text x="65.5" y="21" text-anchor="middle" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="14" fill="#e6edf3">scikit-learn</text></g><g transform="translate(294,214)"><rect width="88" height="32" rx="16" fill="#ffffff" fill-opacity="0.06" stroke="#a855f7" stroke-opacity="0.45"/><text x="44.0" y="21" text-anchor="middle" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="14" fill="#e6edf3">XGBoost</text></g><g transform="translate(392,214)"><rect width="71" height="32" rx="16" fill="#ffffff" fill-opacity="0.06" stroke="#a855f7" stroke-opacity="0.45"/><text x="35.5" y="21" text-anchor="middle" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="14" fill="#e6edf3">SMOTE</text></g><g transform="translate(473,214)"><rect width="88" height="32" rx="16" fill="#ffffff" fill-opacity="0.06" stroke="#a855f7" stroke-opacity="0.45"/><text x="44.0" y="21" text-anchor="middle" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="14" fill="#e6edf3">Next.js</text></g>
+    <rect x="0.5" y="0.5" width="1199" height="299" rx="18" fill="none" stroke="#ffffff" stroke-opacity="0.08"/>
+  </g>
+</svg>
