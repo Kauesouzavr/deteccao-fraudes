@@ -6,7 +6,7 @@
 
 <a href="https://github.com/Kauesouzavr/deteccao-fraudes/actions/workflows/ci.yml"><img src="https://github.com/Kauesouzavr/deteccao-fraudes/actions/workflows/ci.yml/badge.svg" alt="CI"/></a> <a href="https://github.com/Kauesouzavr/deteccao-fraudes/actions/workflows/codeql.yml"><img src="https://github.com/Kauesouzavr/deteccao-fraudes/actions/workflows/codeql.yml/badge.svg" alt="CodeQL"/></a> <a href="https://github.com/Kauesouzavr/deteccao-fraudes/actions/workflows/secret-scan.yml"><img src="https://github.com/Kauesouzavr/deteccao-fraudes/actions/workflows/secret-scan.yml/badge.svg" alt="Secret scan"/></a>
 
-<a href="#resultados-esperados"><b>Resultados</b></a> · <a href="#undersampling-vs-smote"><b>Undersampling vs. SMOTE</b></a> · <a href="#simulador-ao-vivo-no-dashboard"><b>Simulador ao vivo</b></a> · <a href="#limitações"><b>Limitações</b></a>
+<a href="https://deteccao-fraudes-chi.vercel.app"><b>🔎 Ver a demo</b></a> · <a href="#resultados-esperados"><b>Resultados</b></a> · <a href="#undersampling-vs-smote"><b>Undersampling vs. SMOTE</b></a> · <a href="#simulador-ao-vivo-no-dashboard"><b>Simulador ao vivo</b></a> · <a href="#limitações"><b>Limitações</b></a>
 
 </div>
 
