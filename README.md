@@ -6,11 +6,11 @@
 
 <a href="https://github.com/Kauesouzavr/deteccao-fraudes/actions/workflows/ci.yml"><img src="https://github.com/Kauesouzavr/deteccao-fraudes/actions/workflows/ci.yml/badge.svg" alt="CI"/></a> <a href="https://github.com/Kauesouzavr/deteccao-fraudes/actions/workflows/codeql.yml"><img src="https://github.com/Kauesouzavr/deteccao-fraudes/actions/workflows/codeql.yml/badge.svg" alt="CodeQL"/></a> <a href="https://github.com/Kauesouzavr/deteccao-fraudes/actions/workflows/secret-scan.yml"><img src="https://github.com/Kauesouzavr/deteccao-fraudes/actions/workflows/secret-scan.yml/badge.svg" alt="Secret scan"/></a>
 
-<a href="https://deteccao-fraudes-chi.vercel.app"><b>🔎 Ver a demo</b></a> · <a href="#resultados-esperados"><b>Resultados</b></a> · <a href="#undersampling-vs-smote"><b>Undersampling vs. SMOTE</b></a> · <a href="#simulador-ao-vivo-no-dashboard"><b>Simulador ao vivo</b></a> · <a href="#limitações"><b>Limitações</b></a>
+<a href="https://deteccao-fraudes-chi.vercel.app"><b>Ver a demo</b></a> &nbsp;&nbsp;&nbsp; <a href="#resultados-esperados"><b>Resultados</b></a> &nbsp;&nbsp;&nbsp; <a href="#undersampling-vs-smote"><b>Undersampling vs. SMOTE</b></a> &nbsp;&nbsp;&nbsp; <a href="#simulador-ao-vivo-no-dashboard"><b>Simulador ao vivo</b></a> &nbsp;&nbsp;&nbsp; <a href="#limitações"><b>Limitações</b></a>
 
 </div>
 
-> 🇺🇸 **In English:** credit-card fraud detection with machine learning (my undergraduate thesis, reproduced in code). Random Forest, XGBoost and Decision Tree compared with stratified cross-validation, hyperparameter search and undersampling vs. SMOTE. The best model is exported to JSON and runs entirely in the browser in an interactive Next.js dashboard.
+> **In English:** credit-card fraud detection with machine learning (my undergraduate thesis, reproduced in code). Random Forest, XGBoost and Decision Tree compared with stratified cross-validation, hyperparameter search and undersampling vs. SMOTE. The best model is exported to JSON and runs entirely in the browser in an interactive Next.js dashboard.
 
 Projeto prático que reproduz a metodologia do TCC "Detecção de Atividades
 Fraudulentas em Transações Financeiras Utilizando Inteligência Artificial".
@@ -96,7 +96,7 @@ python validacao_cruzada.py
    combinações, 5 folds), comparando o modelo padrão com o otimizado no
    mesmo conjunto de teste. Random Forest e XGBoost já estavam bem
    ajustados (variação dentro da margem de ruído), mas a **Decision Tree
-   tinha overfitting** — sem limite de profundidade, ela decorava o
+   tinha overfitting**: sem limite de profundidade, ela decorava o
    conjunto de treino. Limitando a profundidade (`max_depth=5`) o F1-Score
    subiu de 86,44% para 89,81%.
 
@@ -106,8 +106,8 @@ Os resultados completos ficam salvos em `outputs/validacao_cruzada.csv` e
 ## Undersampling vs. SMOTE
 
 `comparacao_balanceamento.py` testa uma estratégia de balanceamento
-diferente — **SMOTE** (gera transações fraudulentas sintéticas por
-interpolação, em vez de descartar transações legítimas) — contra o
+diferente, o **SMOTE** (gera transações fraudulentas sintéticas por
+interpolação, em vez de descartar transações legítimas), contra o
 undersampling manual usado no pipeline principal.
 
 ```bash
@@ -118,7 +118,7 @@ Para essa comparação ser justa e sem vazamento de dados, a metodologia aqui
 é **diferente** da do `main.py`: os dados são divididos em treino/teste
 **antes** de balancear, o balanceamento (undersampling ou SMOTE) é aplicado
 só no treino, e a avaliação usa o conjunto de teste com a distribuição real
-de fraude (~0,17%) — bem mais desbalanceado que o teste de ~10% usado no
+de fraude (~0,17%), bem mais desbalanceado que o teste de ~10% usado no
 pipeline principal e no `validacao_cruzada.py`. Por isso os números abaixo
 não são diretamente comparáveis à tabela de "Resultados esperados" acima.
 
@@ -134,7 +134,7 @@ não são diretamente comparáveis à tabela de "Resultados esperados" acima.
 **SMOTE vence com folga em todos os modelos.** O undersampling descarta
 ~98% das transações legítimas de treino (fica só com 3.550 registros), então
 o modelo vê pouquíssima variedade de padrões "normais" e erra muito mais
-quando confrontado com o volume real de transações legítimas — a precisão
+quando confrontado com o volume real de transações legítimas: a precisão
 da Decision Tree despenca pra 6%, ou seja, a cada ~16 alertas de fraude, só
 1 é real. O SMOTE mantém todas as transações legítimas reais e só
 complementa a classe minoritária, generalizando muito melhor para o cenário
@@ -144,7 +144,7 @@ real de produção. Resultados completos em
 ## Simulador ao vivo no dashboard
 
 `exportar_modelo_web.py` exporta o Random Forest com os melhores
-hiperparâmetros (encontrados em `validacao_cruzada.py`) em formato JSON —
+hiperparâmetros (encontrados em `validacao_cruzada.py`) em formato JSON:
 cada árvore vira uma estrutura de nós que o próprio navegador percorre em
 JavaScript, sem precisar de um backend Python em produção.
 
@@ -154,15 +154,15 @@ python exportar_modelo_web.py
 
 No dashboard, a seção "Teste você mesmo" deixa escolher uma transação real
 de exemplo e ajustar **Valor** e **Horário** (os únicos dois campos com
-significado no mundo real — as outras 28 variáveis, V1-V28, são componentes
+significado no mundo real; as outras 28 variáveis, V1-V28, são componentes
 anonimizados por PCA e não têm um valor "editável" que faça sentido) pra ver
 a previsão de fraude mudar instantaneamente.
 
 ## Limitações
 
 Esse projeto treina e valida tudo usando **um único dataset** (o Credit Card
-Fraud Detection do Kaggle). Isso não é uma falha específica deste projeto —
-é a realidade de praticamente qualquer projeto público de detecção de
+Fraud Detection do Kaggle). Isso não é uma falha específica deste projeto.
+É a realidade de praticamente qualquer projeto público de detecção de
 fraude: dados reais de transações bancárias são extremamente sigilosos (por
 lei e por concorrência entre instituições), então não existe forma de uma
 pessoa física conseguir dados de múltiplos bancos pra treinar um modelo mais
@@ -174,7 +174,7 @@ generalizar** para:
 
 - Transações de outro banco ou bandeira de cartão (padrões de fraude variam
   entre instituições).
-- Outro período de tempo (os padrões de fraude mudam — novas técnicas de
+- Outro período de tempo (os padrões de fraude mudam, novas técnicas de
   golpe surgem constantemente, e o dataset é de uma janela de tempo fixa).
 - Outro país ou perfil de consumo.
 
@@ -190,10 +190,10 @@ pronto para produção.
 
 Todos os itens planejados originalmente já foram implementados (validação
 cruzada, otimização de hiperparâmetros, comparação com SMOTE, e um
-simulador interativo — que acabou substituindo a ideia original de uma
+simulador interativo, que acabou substituindo a ideia original de uma
 interface separada em Streamlit, já que roda direto no dashboard, no
 navegador, sem servidor).
 
 ---
 
-Feito por **Kauê Souza** · [LinkedIn](https://www.linkedin.com/in/kauesouzaproti/) · [GitHub](https://github.com/Kauesouzavr)
+Feito por **Kauê Souza**. Para conversar, me chame no [LinkedIn](https://www.linkedin.com/in/kauesouzaproti/).
